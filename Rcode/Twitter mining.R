@@ -1,0 +1,2 @@
+require(twitteR)
+require(RCurl)
