@@ -4,7 +4,7 @@ test<-read.csv(file.choose(), header=T)
 str(train)
 str(test)
 
-#Since Test has to survive variable, we need to add one 
+#Since Test has no survive variable, we need to add one 
 # Add a Survived variable to the test 
 test.survived <- data.frame(survived = rep("None", nrow(test)), test[,])
 
