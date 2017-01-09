@@ -14,6 +14,7 @@ mtext(paste("line",0:4),side=2,line=0:4,at=15,cex=0.6)
 mtext(paste("line",0:4),side=3,line=0:4,at=3,cex=0.6)
 mtext(paste("line",0:4),side=4,line=0:4,at=15,cex=0.6)
 lines(0:50)
+
  #next series
 x<-1:10
 y<-11:20
@@ -23,6 +24,7 @@ lines(c(2,2,5.5),c(12,12,12),lwd=4,lty="solid",col="red")
 lines(c(2,2,2),c(12,12,15.5),lwd=4,lty="solid",col="red")
 text(4,11.5,"x-mean(x)",cex=0.8)
 text(1.32,13.5,"y-mean(y)",cex=0.8)
+
 #next series
 par(mar=c(3,6,2,2),xaxs="i",yaxs="i",xpd=FALSE,las=1)
 plot(c(0,1),c(0,1),type="n",ann=FALSE,axes=FALSE)
@@ -35,3 +37,8 @@ lines(c(0,0.5,1),c(0,0,0),lwd=4,lty="solid",col="black")
 lines(c(1,1,1),c(1,0.5,0),lwd=4,lty="solid",col="black")
 lines(c(0.5,0.5,0.5),c(1,0.5,0),lwd=4,lty="solid",col="black")
 lines(c(0,0.5,1),c(0.5,0.5,0.5),lwd=4,lty="solid",col="black")
+points(.25,.25,pch=8,cex=10,lwd=4,col="blue")
+points(.25,.75,pch=8,cex=10,lwd=4,col="blue")
+points(.75,.75,pch=8,cex=10,lwd=4,col="blue")
+points(.75,.25,pch=8,cex=10,lwd=4,col="blue")
+
