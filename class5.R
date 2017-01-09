@@ -41,4 +41,7 @@ points(.25,.25,pch=8,cex=10,lwd=4,col="blue")
 points(.25,.75,pch=8,cex=10,lwd=4,col="blue")
 points(.75,.75,pch=8,cex=10,lwd=4,col="blue")
 points(.75,.25,pch=8,cex=10,lwd=4,col="blue")
-
+points(.5,.5,pch=1,cex=1,lwd=10,col="red")
+points(.5,.5,pch=1,cex=10,lwd=4,col="yellow")
+points(.5,.5,pch=1,cex=5,lwd=10,col="violet")
+points(.5,.5,pch=1,cex=8,lwd=10,col="green")
