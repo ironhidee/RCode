@@ -1,6 +1,0 @@
-attach(mtcars)
-require(plyr)
-count(mtcars, 'gear')
-require(ggplot2)
-ggplot(mtcars, aes(cyl, hp, color = gear)) + geom_point()
-ggplot(iris, aes(Sepal.Length, Petal.Length, color= Species)) + geom_point()
