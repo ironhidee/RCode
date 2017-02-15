@@ -1,0 +1,5 @@
+v<-read.csv(file.choose(), header = T)
+View(v)
+plot(v$curlen, v$sex)
+f<-glm(sex~curlen,family=binomial, data=v)
+summary(f)

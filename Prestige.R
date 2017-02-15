@@ -1,0 +1,5 @@
+require(car)
+data("Prestige")
+reg1<-lm(prestige~education+income+women+census+type, data=Prestige)
+summary(reg1)
+outlierTest(reg1)
