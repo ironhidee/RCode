@@ -25,3 +25,6 @@ Box.test(a1$residuals, lag=12, type = "Ljung-Box")
 #We accept the null hypostesis and the model is a Success!
 f<-forecast(a1, h=12)
 plot(f)
+
+h1<-stl(yobs, s.window="periodic")
+plot(h1)
