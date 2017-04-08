@@ -1,0 +1,59 @@
+---
+title: "Untitled"
+author: "Rohit"
+date: "April 7, 2017"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r}
+require(dplyr)
+require(readxl)    
+read_excel_allsheets <- function(filename) {
+    sheets <- readxl::excel_sheets(filename)
+    x <-    lapply(sheets, function(X) readxl::read_excel(filename, sheet = X))
+    names(x) <- sheets
+    x
+}
+file24<-file.choose()
+mysheets <- read_excel_allsheets(file24)
+glimpse(mysheets)
+```
+
+
+```{r}
+hardnessvspaint<-function(Paint,Hardness) {
+  f1<-aov(Hardness~Paint) 
+  result<-TukeyHSD(f1)
+  plot(result)
+  summary(f1)
+}
+
+(result1<-hardnessvspaint(mysheets$Hardness$Paint,mysheets$Hardness$Hardness))
+```
+
+```{r}
+hardnessvsoperator<-function(Operator,Hardness) {
+  d1<-as.factor(Operator)
+  f2<-aov(Hardness~d1) 
+  result<-TukeyHSD(f2)
+  plot(result)
+  summary(f2)
+}
+
+(result2<-hardnessvsoperator(mysheets$Hardness$Operator,mysheets$Hardness$Hardness))
+```
+
+```{r}
+hardnessvstemp<-function(Temp,Hardness) {
+  f3<-lm(Hardness~Temp)
+  plot(Hardness~Temp)
+  abline(f3)
+  summary(f3)
+}
+
+(result3<-hardnessvstemp(mysheets$Hardness$Temp,mysheets$Hardness$Hardness))
+```
+

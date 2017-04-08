@@ -1,0 +1,73 @@
+---
+title: "Attitude Regression"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+Import 'attitude' dataset
+```{r}
+data(attitude)
+```
+
+plot boxplot for all columns
+```{r}
+boxplot(attitude)
+```
+
+We observe that there are outliers in critical and advance.
+We take the boxplot stats for the two columns
+```{r}
+boxplot.stats(attitude$critical)
+```
+The outlier here is the value 49
+```{r}
+boxplot.stats(attitude$advance)
+```
+The outlier is the value 72
+
+In attitude$critical we will identify the position of the value 49.
+```{r}
+which(attitude$critical<54)
+```
+The outlier 49 is in the 6th column
+
+In attitude$advance we will identify the position of the value 72.
+```{r}
+which(attitude$advance>63)
+```
+The outlier 72 is in the 26th column
+
+We will interpolate these values with the nearby values
+
+```{r}
+attitude$critical[6]<-attitude$critical[7]
+attitude$advance[26]<-attitude$advance[27]
+```
+
+Now the new dataset is 
+```{r}
+attitude
+```
+The new boxplot is 
+```{r}
+boxplot(attitude)
+```
+There are no outliers here
+
+Now running regression model on the attitude dataset
+```{r}
+model<-lm(rating~complaints+privileges+learning+raises+critical+advance, data = attitude)
+
+```
+
+Low taking the summary of this model
+```{r}
+summary(model)
+```
+
+From the above results we see that only attitude$complaints is significant at 1% interval. We reject the null hypothesis. t-value 4.013>2.807(from t-table, df = 30-7, 99% confidence level) 
+
+The F-value is 10.1 which is significant as > 5.65 at 0.1% as per the F stats table. Hence null hypothesis is rejected.
+
+The model explains the data upto 72.5%. Since this has multiple independent variables, we go with the Adjusted R-sq which is 0.6532 i.e 65.32% variation in 'rating' can be explained by model. 

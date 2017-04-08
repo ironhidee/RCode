@@ -1,0 +1,6 @@
+require(survival)
+attach(genfan)
+plot(genfan)
+reg3<-glm(status~hours, family=binomial)
+summary(reg3)
+anova(reg3, test = "Chisq")
