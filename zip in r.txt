@@ -1,6 +1,40 @@
 test - https://www.dropbox.com/s/14wctxazfio3hs1/test.zip?dl=1
 train - https://www.dropbox.com/s/7g6d0jdpcqk2dia/train.zip?dl=1
+groceries - https://www.dropbox.com/s/tj1aprga9en9dio/groceries.zip?dl=1
+
 
 require(downloads)
 download("https://www.dropbox.com/s/br0s3m0joljp1cu/groceries.zip?dl=1", dest="groceries.zip", mode="wb") 
 unzip ("groceries.zip")
+
+
+wget "https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh"
+bash Anaconda3-4.4.0-Linux-x86_64.sh
+source .bashrc
+conda install -c conda-forge xgboost 
+conda install -c conda-forge mlxtend 
+jupyter notebook --no-browser --port=8888
+rm Anaconda3-4.4.0-Linux-x86_64.sh
+
+
+
+#-----------------------------------------------------
+test=pd.io.parsers.read_csv("test.csv")
+
+train=pd.io.parsers.read_csv("train.csv", dtype ={
+"Country":object,
+"TrafficType":object,
+"ClickDate":object,
+"Device":object,
+"Browser":object,
+"OS":object,
+"RefererUrl":object,
+"UserIp":object,
+"ConversionStatus":bool,
+"ConversionDate":object,
+"publisherId":object})
+"subPublisherId":object,})
+
+#----------------------------------------------------------
+
+conda create -n ana python=2.7
