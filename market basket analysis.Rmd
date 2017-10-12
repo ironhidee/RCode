@@ -1,0 +1,71 @@
+---
+title: "Market basket analysis"
+author: "Rohit"
+date: "September 9, 2017"
+output:
+  word_document: default
+  html_document: default
+---
+
+#Reading the unstructured data of groceries into a structured form of a table.
+
+
+#This data table requires a lot of memory to load up. So the solution is to use a sparse matrix.
+
+
+```{r}
+require(arules)
+require(arulesViz)
+gr <- read.transactions(file.choose(), sep = ",")
+```
+
+```{r}
+summary(gr)
+```
+
+```{r}
+inspect(gr[1:5])
+```
+
+#Support for items
+```{r}
+itemFrequency(gr[,100:105]) 
+```
+
+```{r}
+itemFrequencyPlot(gr, support = .10)
+itemFrequencyPlot(gr,topN=10,type="absolute")
+itemFrequencyPlot(gr,topN=10,type="relative")
+```
+
+#Setting the minimum required support and confidence
+```{r}
+rules <- apriori(gr, parameter = list(supp = 0.007, conf = 0.20, minlen =2))
+summary(rules)
+```
+
+#Looking at 5 items
+```{r}
+options(digits=2)
+inspect(rules[1:5])
+```
+
+```{r}
+rules<-sort(rules, by="confidence", decreasing=TRUE)
+```
+
+#Looking at the top 10 items (Confidence level)
+```{r}
+options(digits=2)
+inspect(rules[1:10])
+```
+
+```{r}
+rules<-sort(rules, by="lift", decreasing=TRUE)
+```
+
+#Looking at the top 10 items (Lift)
+```{r}
+options(digits=2)
+inspect(rules[1:10])
+```
